@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid Background="DarkSlateGray" RenderTransformOrigin="0.555,0.775">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="188*"/>
+            <RowDefinition Height="231*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="Cord_x" Margin="352,48,373,12" Background="Azure">
+        </StackPanel>
+        <StackPanel x:Name="Cord_y" Margin="272,48,454,12" Background="Azure" RenderTransformOrigin="0.591,0.711">
+        </StackPanel>
+
+
+        <TextBox Text="Введите скорость" x:Name="str_velosity" FontSize="15" Margin="0,29,595,112" HorizontalAlignment="Right" Width="197" />
+        <TextBox Text="Введите угол" x:Name="str_angle" FontSize="15" Margin="0,81,595,61" HorizontalAlignment="Right" Width="197" />
+        <Button Content="Fire" x:Name="on_Fire" Margin="0,174,595,212" Click="Button_Click" Grid.RowSpan="2"/>
+        <TextBlock Text="CordY               CordX" Margin="270,26,385,140" RenderTransformOrigin="0.907,0.465"/>
+
+
+
+
+    </Grid>
+</Window>
