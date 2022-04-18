@@ -12,17 +12,41 @@
             <RowDefinition Height="188*"/>
             <RowDefinition Height="231*"/>
         </Grid.RowDefinitions>
+        <Grid Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="189*"/>
+                <RowDefinition Height="230*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*">
 
-        <StackPanel x:Name="Cord_x" Margin="352,48,373,12" Background="Azure">
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+
+
+
+
+        <StackPanel Grid.Column ="2"  x:Name="Cord_y" Margin="250,47,438,151" Background="Azure" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.591,0.711" Grid.RowSpan="2">
+            <StackPanel.Effect>
+                <DropShadowEffect/>
+            </StackPanel.Effect>
         </StackPanel>
-        <StackPanel x:Name="Cord_y" Margin="272,48,454,12" Background="Azure" RenderTransformOrigin="0.591,0.711">
+
+        <TextBlock Grid.Column="1" Text="Введите угол в радианах" Margin="14,110,603,52"/>
+        <TextBlock Grid.Column="1" Text="Введите скорость" Margin="14,31,606,120"/>
+
+        <TextBox  Text=""  x:Name="str_velosity" FontSize="15" Margin="0,55,582,86" HorizontalAlignment="Right" Width="197" />
+        <TextBox Text="" x:Name="str_angle" FontSize="15" Margin="0,133,581,9" HorizontalAlignment="Right" Width="197" />
+        <Button Grid.Column="1" Grid.Row="2" Content="Fire" x:Name="on_Fire" Margin="5,49,590,149" Click="Button_Click" />
+
+        <StackPanel Grid.Column ="2" x:Name="Cord_x" Margin="350,48,334,150" HorizontalAlignment="Left" VerticalAlignment="Top"  Background="Azure"  RenderTransformOrigin="0.591,0.711" Grid.RowSpan="2">
+            <StackPanel.Effect>
+                <DropShadowEffect/>
+            </StackPanel.Effect>
         </StackPanel>
-
-
-        <TextBox Text="Введите скорость" x:Name="str_velosity" FontSize="15" Margin="0,29,595,112" HorizontalAlignment="Right" Width="197" />
-        <TextBox Text="Введите угол" x:Name="str_angle" FontSize="15" Margin="0,81,595,61" HorizontalAlignment="Right" Width="197" />
-        <Button Content="Fire" x:Name="on_Fire" Margin="0,174,595,212" Click="Button_Click" Grid.RowSpan="2"/>
-        <TextBlock Text="CordY               CordX" Margin="270,26,385,140" RenderTransformOrigin="0.907,0.465"/>
 
 
 

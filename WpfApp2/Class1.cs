@@ -12,32 +12,45 @@ public class Class1
     public List<double> Timer = new List<double>();
     const double gravity = 9.8;
 
+    public int Epsilon_Round(string str_Angle, string str_Forse)
+    {
+        if (Travel_Distance(str_Angle, str_Forse) > 100) return 0;
+        if (Travel_Distance(str_Angle, str_Forse) > 10) return 1;
+        else return 2;
+    }
+
+    public double Travel_Distance(string str_Angle, string str_Forse)
+    {
+        double Time_Travel = 2 * Convert.ToDouble(str_Forse) * Math.Sin(Convert.ToDouble(str_Angle)) / 9.8;
+        return ((Convert.ToDouble(str_Forse)) * Math.Cos(Convert.ToDouble(str_Angle)) * Time_Travel);
+
+    }
+
     public void Time(string str_Angle, string str_Forse)
     {
         double Time_Travel = 2 * Convert.ToDouble(str_Forse) * Math.Sin(Convert.ToDouble(str_Angle))/9.8;
         double i = 0;
-        while (i< Time_Travel)
+        while (i<= Time_Travel)
         {
-            
             Timer.Add(i);
             i += Time_Travel / 10;
         }
-    }
 
+    }
     public void Fly(string str_Angle,string str_Forse)
     {
     
     double Angle = Convert.ToDouble(str_Angle);
     double Forse = Convert.ToDouble(str_Forse);
         double Time_Travel = 2 * Forse * Math.Sin(Angle)/9.8;
-        double epsilon = Time_Travel / 100;
-        
+        int epsilon = Epsilon_Round(str_Angle, str_Forse);
         
         foreach(double i in Timer)
         {
-            cord_x.Add(Forse * Math.Cos(Angle) * i);
-            cord_y.Add(Forse * Math.Sin(Angle) * i - gravity * i * i / 2);
+            cord_x.Add(Math.Round(Forse * Math.Cos(Angle) * i,epsilon));
+            cord_y.Add(Math.Round(Forse * Math.Sin(Angle) * i - gravity * i * i / 2,epsilon));
         }
+
 }
 
 public double FlyOnCordX(string str_Angle, string str_Forse,double time)
@@ -65,4 +78,5 @@ public double FlyOnCordX(string str_Angle, string str_Forse,double time)
         this.num_Angle = num_Angle;
         this.num_Velosity = num_Velosity;
     }
+
 }

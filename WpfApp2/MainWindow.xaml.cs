@@ -25,34 +25,59 @@ namespace WpfApp2
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            string str_Velosity = Convert.ToString(str_velosity.Text);
-            string str_Angle = Convert.ToString(str_angle.Text);
-            if ((int.TryParse(str_velosity.Text, out int _Velosity))&&(int.TryParse(str_angle.Text, out int _Angle)
-                )){
-                MessageBox.Show("успешный ввод цифр");
+            Cord_x.Children.Clear();
+            Cord_y.Children.Clear();
+            string str_Velosity;
+            string str_Angle;
+            while (true)
+            {
+                str_Velosity = Convert.ToString(str_velosity.Text);
+                str_Angle = Convert.ToString(str_angle.Text);
+                if ((int.TryParse(str_velosity.Text, out int _Velosity)) && (int.TryParse(str_angle.Text, out int _Angle)
+                    ))
+                {
+                    MessageBox.Show("успешный ввод цифр");
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка");
+                    return;
+                }
             }
-            else MessageBox.Show("Ошибка");
+           
 
             double num_Angle = Convert.ToDouble(str_Angle);
             double num_Velosity = Convert.ToDouble(str_Velosity);
         //    double time_tarvel = 2 * num_Velosity * Math.Sin(num_Angle)/9.8;
             var mc = new Class1(num_Angle, num_Velosity);
+
             mc.Time(str_Angle, str_Velosity);
             mc.Fly(str_Angle, str_Velosity);
-            foreach (int i in mc.Timer)
-                Cord_x.Children.Add(new Label { Content = mc.cord_x[i] });
-
-            foreach (int i in mc.Timer)
-                Cord_y.Children.Add(new Label { Content = Content = mc.cord_y[i] });
+            mc.Epsilon_Round(str_Angle, str_Velosity);
 
 
+            /*Cord_x.Children.Add(new TextBlock { Text = "Coord_x" });
+            Cord_y.Children.Add(new TextBlock { Text = "Coord_y" });
+            for (int i = 0; i < mc.Timer.Count; ++i)
+            {
+                Cord_x.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_x[i])});
+                Cord_y.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_y[i]) });
+                Cord_y.CanHorizontallyScroll = true;
+                Cord_x.CanHorizontallyScroll = true;
+            }
+            */
+            Visibility = Visibility.Hidden;
+            
+            
+          
         }
+
         public MainWindow()
         {
 
             InitializeComponent();
         }
-        
 
     }
 
