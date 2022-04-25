@@ -22,7 +22,6 @@ namespace WpfApp2
     public partial class MainWindow : Window
     {
 
-
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             Cord_x.Children.Clear();
@@ -47,6 +46,7 @@ namespace WpfApp2
             }
            
 
+
             double num_Angle = Convert.ToDouble(str_Angle);
             double num_Velosity = Convert.ToDouble(str_Velosity);
         //    double time_tarvel = 2 * num_Velosity * Math.Sin(num_Angle)/9.8;
@@ -57,28 +57,44 @@ namespace WpfApp2
             mc.Epsilon_Round(str_Angle, str_Velosity);
 
 
-            /*Cord_x.Children.Add(new TextBlock { Text = "Coord_x" });
+            Cord_x.Children.Add(new TextBlock { Text = "Coord_x" });
             Cord_y.Children.Add(new TextBlock { Text = "Coord_y" });
-            for (int i = 0; i < mc.Timer.Count; ++i)
+         /*   for (int i = 0; i < mc.Timer.Count; ++i)
             {
                 Cord_x.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_x[i])});
                 Cord_y.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_y[i]) });
                 Cord_y.CanHorizontallyScroll = true;
                 Cord_x.CanHorizontallyScroll = true;
             }
-            */
-            Visibility = Visibility.Hidden;
+         */
+            Birds();
             
-            
+           
           
         }
 
         public MainWindow()
         {
-
+            
             InitializeComponent();
         }
+        public async void Birds()
+        {
 
+            Canvas.SetLeft(Bird, 200);
+            Canvas.SetTop(Bird, 220);
+            int i = 0;
+            while (i < 400)
+            {
+                await Task.Delay(1000);
+                Canvas.SetLeft(Bird, i);
+                Canvas.SetTop(Bird, i/2);
+                i += 20;
+
+            }
+
+
+        }
     }
 
 }

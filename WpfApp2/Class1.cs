@@ -11,7 +11,7 @@ public class Class1
     public List<double> cord_y = new List<double>();
     public List<double> Timer = new List<double>();
     const double gravity = 9.8;
-
+   
     public int Epsilon_Round(string str_Angle, string str_Forse)
     {
         if (Travel_Distance(str_Angle, str_Forse) > 100) return 0;

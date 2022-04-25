@@ -20,10 +20,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*">
-
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
+        <Canvas x:Name="Bird1">
+            <Ellipse x:Name="Bird" Fill="Red" Width="20" Height="20" Canvas.Left="250" Canvas.Top="250" />
+        </Canvas>
 
 
 
