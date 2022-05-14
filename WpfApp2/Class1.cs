@@ -11,7 +11,13 @@ public class Class1
     public List<double> cord_y = new List<double>();
     public List<double> Timer = new List<double>();
     const double gravity = 9.8;
-   
+    
+    public void Test_border(string str_Angle, string str_Forse)
+    {
+
+
+    }
+        
     public int Epsilon_Round(string str_Angle, string str_Forse)
     {
         if (Travel_Distance(str_Angle, str_Forse) > 100) return 0;
@@ -19,13 +25,14 @@ public class Class1
         else return 2;
     }
 
+
     public double Travel_Distance(string str_Angle, string str_Forse)
     {
         double Time_Travel = 2 * Convert.ToDouble(str_Forse) * Math.Sin(Convert.ToDouble(str_Angle)) / 9.8;
         return ((Convert.ToDouble(str_Forse)) * Math.Cos(Convert.ToDouble(str_Angle)) * Time_Travel);
 
     }
-
+    public double Time_Travel(string str_Angle, string str_Forse) {return 2 * Convert.ToDouble(str_Forse) * Math.Sin(Convert.ToDouble(str_Angle)) / 9.8; }
     public void Time(string str_Angle, string str_Forse)
     {
         double Time_Travel = 2 * Convert.ToDouble(str_Forse) * Math.Sin(Convert.ToDouble(str_Angle))/9.8;
@@ -58,6 +65,7 @@ public double FlyOnCordX(string str_Angle, string str_Forse,double time)
         double Angle = 180 / Math.PI * Convert.ToDouble(str_Angle);
         double Forse = Convert.ToDouble(str_Forse);
         double cord_x;
+
         cord_x=Forse * Math.Cos(Angle) * time;
         return cord_x;
 
