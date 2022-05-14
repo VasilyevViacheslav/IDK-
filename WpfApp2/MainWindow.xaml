@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-
+    
     <Grid Background="DarkSlateGray" RenderTransformOrigin="0.555,0.775">
         <Grid.RowDefinitions>
             <RowDefinition Height="188*"/>
@@ -23,6 +23,7 @@
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
+        <Button Margin="5,91,590,106" Grid.Row="1" Click="button1_Click" Content="Выбрать файл"/>
         <Canvas x:Name="Bird1">
             <Ellipse x:Name="Bird" Fill="Red" Width="20" Height="20" Canvas.Left="250" Canvas.Top="250" />
         </Canvas>

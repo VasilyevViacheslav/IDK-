@@ -8,10 +8,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 
 namespace WpfApp2
@@ -21,7 +22,12 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-       
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            Form dlg1 = new Form();
+            dlg1.ShowDialog();
+        }
+
         public async void Button_Click(object sender, RoutedEventArgs e)
         {
             Cord_x.Children.Clear();
@@ -38,12 +44,12 @@ namespace WpfApp2
                     &&
                     (Double.TryParse(str_angle.Text, out double _Angle)))
                     {
-                        MessageBox.Show("успешный ввод цифр");
+                    System.Windows.Forms.MessageBox.Show("успешный ввод цифр");
                         break;
                     }
                 else
                 {
-                    MessageBox.Show("Ошибка");
+                    System.Windows.Forms.MessageBox.Show("Ошибка");
                     return;
                 }
             }
@@ -74,7 +80,7 @@ namespace WpfApp2
             */
 
             double i = 0;
-            MessageBox.Show(Convert.ToString(Math.Cos(num_Angle)));
+           // MessageBox.Show(Convert.ToString(Math.Cos(num_Angle)));
             while (true)
             {
                 double Max_Distance = ((mc.FlyOnCordX(str_Angle, str_Velosity, i)) + 230);
@@ -87,7 +93,7 @@ namespace WpfApp2
                 }
                 else
                 {
-                    MessageBox.Show("Вылет за грицу мира");
+                   System.Windows.Forms.MessageBox.Show("Вылет за грицу мира");
                     return;
                 }
                 i += 0.04;
@@ -108,6 +114,11 @@ namespace WpfApp2
             InitializeComponent();
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
+

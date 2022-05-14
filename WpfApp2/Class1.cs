@@ -17,7 +17,17 @@ public class Class1
 
 
     }
-        
+    public string RadToGradus(string Angle)
+    {
+
+       return Convert.ToString((Convert.ToDouble(Angle)* 180) / Math.PI);
+    }
+
+    public string GradusToRad(string Angle)
+    {
+        return Convert.ToString((Convert.ToDouble(Angle) * Math.PI)/180);
+    }
+
     public int Epsilon_Round(string str_Angle, string str_Forse)
     {
         if (Travel_Distance(str_Angle, str_Forse) > 100) return 0;
