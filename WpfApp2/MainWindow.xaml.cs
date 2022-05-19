@@ -22,6 +22,8 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected int score = 0;
+
         private void button1_Click(object sender, System.EventArgs e)
         {
             Form dlg1 = new Form();
@@ -46,6 +48,7 @@ namespace WpfApp2
                     {
                     System.Windows.Forms.MessageBox.Show("успешный ввод цифр");
                         break;
+
                     }
                 else
                 {
@@ -57,32 +60,20 @@ namespace WpfApp2
             double num_Angle = Convert.ToDouble(str_Angle);
             double num_Velosity = Convert.ToDouble(str_Velosity);
 
-
-        //    double time_tarvel = 2 * num_Velosity * Math.Sin(num_Angle)/9.8;
-
         
             var mc = new Class1(num_Angle, num_Velosity);
-            
+            var target = new Target();
 
             mc.Time(str_Angle, str_Velosity);
             mc.Fly(str_Angle, str_Velosity);
             mc.Epsilon_Round(str_Angle, str_Velosity);
-            /*
-            Cord_x.Children.Add(new TextBlock { Text = "Coord_x" });
-            Cord_y.Children.Add(new TextBlock { Text = "Coord_y" });
-               for (int i = 0; i < mc.Timer.Count; ++i)
-               {
-                   Cord_x.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_x[i])});
-                   Cord_y.Children.Add(new TextBlock { Text = Convert.ToString(mc.cord_y[i]) });
-                   Cord_y.CanHorizontallyScroll = true;
-                   Cord_x.CanHorizontallyScroll = true;
-               }
-            */
+            
 
             double i = 0;
-           // MessageBox.Show(Convert.ToString(Math.Cos(num_Angle)));
             while (true)
             {
+                    target.DrawTarget();
+                
                 double Max_Distance = ((mc.FlyOnCordX(str_Angle, str_Velosity, i)) + 230);
                 double Max_Fly = 300 - (mc.FlyOnCordY(str_Angle, str_Velosity, i));
                 await Task.Delay(5);
@@ -90,10 +81,16 @@ namespace WpfApp2
                 {
                     Canvas.SetTop(Bird, Max_Fly);
                     Canvas.SetLeft(Bird, Max_Distance);
+                    if (target.IsHit(Bird1, target.canvas))
+                    {
+                        score++;
+                        System.Windows.Forms.MessageBox.Show("А");
+                        break;
+                    }
                 }
                 else
                 {
-                   System.Windows.Forms.MessageBox.Show("Вылет за грицу мира");
+                   System.Windows.Forms.MessageBox.Show("Промах");
                     return;
                 }
                 i += 0.04;
