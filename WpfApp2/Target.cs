@@ -21,42 +21,28 @@ namespace WpfApp2
 
     public class Target:Window
     {
-        public  Canvas canvas = new Canvas();
-
-
+        
         public bool Flag=true;
-        public double Rand()
+        public double RandSwitch(Canvas Alone)
         {
             Random rnd = new Random();
             int value = rnd.Next(0, 300);
+            Canvas.SetTop(Alone.Children[1], value);
             return value;
         }
-        public void DrawTarget()
+       
+        public bool IsHit(Canvas Alone)
         {
-            Ellipse myEl = new Ellipse();
-            canvas.Children.Add(myEl);
-            myEl.Stroke = System.Windows.Media.Brushes.White;
-            myEl.Fill = System.Windows.Media.Brushes.DarkBlue;
-            myEl.Width = 50;
-            myEl.Height = 50;
-            myEl.Visibility = Visibility;
-            Canvas.SetZIndex(myEl, 1);
-            Canvas.SetTop(myEl,250);
-            Canvas.SetLeft(myEl, 750);
-            
-        }
-        public bool IsHit(Canvas FlyObject,Canvas StaticObject)
-        {
-            double k = Canvas.GetTop(FlyObject.Children[0]);
-            double f = Canvas.GetTop(StaticObject.Children[0]);
-            double f2 = Canvas.GetLeft(FlyObject.Children[0]);
-            double f1 = Canvas.GetLeft(StaticObject.Children[0]);
+            double k = Canvas.GetTop(Alone.Children[0]);
+            double f = Canvas.GetTop(Alone.Children[1]);
+            double f2 = Canvas.GetLeft(Alone.Children[0]);
+            double f1 = Canvas.GetLeft(Alone.Children[1]);
 
 
-            if (Math.Abs(f-k) < 50)
+            if (Math.Abs(f-k) < 30)
             {
 
-                if (Math.Abs(f2-f1) < 50)
+                if (Math.Abs(f2-f1) < 30)
                 {
                     Flag = false;
 

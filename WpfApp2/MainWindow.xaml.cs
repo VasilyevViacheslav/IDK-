@@ -22,7 +22,10 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+
         protected int score = 0;
+        
+
 
         private void button1_Click(object sender, System.EventArgs e)
         {
@@ -32,8 +35,7 @@ namespace WpfApp2
 
         public async void Button_Click(object sender, RoutedEventArgs e)
         {
-            Cord_x.Children.Clear();
-            Cord_y.Children.Clear();
+            
             string str_Velosity;
             string str_Angle;
 
@@ -57,40 +59,48 @@ namespace WpfApp2
                 }
             }
           
-            double num_Angle = Convert.ToDouble(str_Angle);
+            double num_Angle = Convert.ToDouble(str_Angle)* Math.PI/180;
             double num_Velosity = Convert.ToDouble(str_Velosity);
 
+            str_Angle = Convert.ToString(num_Angle);
+            
         
             var mc = new Class1(num_Angle, num_Velosity);
-            var target = new Target();
-
             mc.Time(str_Angle, str_Velosity);
             mc.Fly(str_Angle, str_Velosity);
             mc.Epsilon_Round(str_Angle, str_Velosity);
-            
+            var mm = new Target();
+           
 
             double i = 0;
             while (true)
             {
-                    target.DrawTarget();
+                
                 
                 double Max_Distance = ((mc.FlyOnCordX(str_Angle, str_Velosity, i)) + 230);
                 double Max_Fly = 300 - (mc.FlyOnCordY(str_Angle, str_Velosity, i));
                 await Task.Delay(5);
-                if ((Max_Distance <= 750) && (Max_Fly <= 350) && (Max_Fly > 0))
+                if ((Max_Distance <= 750) && (Max_Fly <= 350))
                 {
                     Canvas.SetTop(Bird, Max_Fly);
                     Canvas.SetLeft(Bird, Max_Distance);
-                    if (target.IsHit(Bird1, target.canvas))
+                    if (mm.IsHit(Bird1))
                     {
                         score++;
                         System.Windows.Forms.MessageBox.Show("А");
+                        Canvas.SetTop(Bird, 250);
+                        Canvas.SetLeft(Bird, 250);
+                        mm.RandSwitch(Bird1);
+                        Oshko.Text = Convert.ToString( Convert.ToDouble(Oshko.Text)+1);
                         break;
                     }
+                    if (i >= 10) break;
                 }
                 else
                 {
                    System.Windows.Forms.MessageBox.Show("Промах");
+                    Canvas.SetTop(Bird, 250);
+                    Canvas.SetLeft(Bird, 250);
                     return;
                 }
                 i += 0.04;

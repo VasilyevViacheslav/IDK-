@@ -25,12 +25,16 @@
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
+
         <Button Margin="5,91,590,106" Grid.Row="1" Click="button1_Click" Content="Выбрать файл"/>
         <Canvas x:Name="Bird1">
-            <Ellipse  x:Name="Bird" Fill="Red" Width="30" Height="30" Canvas.Left="250" Canvas.Top="250" />
-
+            <Ellipse  x:Name="Bird" Fill="Red" Width="30" Height="30" Canvas.Left="230" Canvas.Top="300" />
+            <Ellipse x:Name="Target" Fill="Black" Width="30" Height="30" Canvas.Left="750" Canvas.Top="250"/>
+            
         </Canvas>
-        
+        <TextBlock Background="DarkSlateGray" x:Name="Oshko" FontSize="25" Height="77" Canvas.Left="372" TextWrapping="Wrap" Text="0" Canvas.Top="21" Width="193" FontFamily="Trebuchet MS" Margin="370,22,230.6,89.8" Panel.ZIndex="-6" />
+
+
 
 
 
@@ -41,7 +45,7 @@
             </StackPanel.Effect>
         </StackPanel>
 
-        <TextBlock Grid.Column="1" Text="Введите угол в радианах" Margin="14,110,603,52"/>
+        <TextBlock Grid.Column="1" Text="Введите угол в градусах" Margin="14,110,603,52"/>
         <TextBlock Grid.Column="1" Text="Введите скорость" Margin="14,31,606,120"/>
 
         <TextBox  Text=""  x:Name="str_velosity" FontSize="15" Margin="0,55,582,86" HorizontalAlignment="Right" Width="197" />
@@ -53,6 +57,7 @@
                 <DropShadowEffect/>
             </StackPanel.Effect>
         </StackPanel>
+        <TextBlock HorizontalAlignment="Left" Margin="284,12,0,0" TextWrapping="Wrap" Text="Score:" FontSize="30" VerticalAlignment="Top" Height="73" Width="309"/>
 
 
 

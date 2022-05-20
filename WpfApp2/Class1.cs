@@ -76,7 +76,7 @@ namespace WpfApp2
 
         public double FlyOnCordX(string str_Angle, string str_Forse, double time)
         {
-            double Angle = 180 / Math.PI * Convert.ToDouble(str_Angle);
+            double Angle = Convert.ToDouble(str_Angle);
             double Forse = Convert.ToDouble(str_Forse);
             double cord_x;
 
