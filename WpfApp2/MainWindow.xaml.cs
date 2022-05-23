@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,14 +25,16 @@ namespace WpfApp2
     {
 
         protected int score = 0;
-        
 
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
-            Form dlg1 = new Form();
-            dlg1.ShowDialog();
+
+            Window3 menuWindow = new Window3(Convert.ToString(score));
+            menuWindow.ShowDialog();
         }
+
+        
 
         public async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -46,12 +49,8 @@ namespace WpfApp2
                 if (
                     (int.TryParse(str_velosity.Text, out int _Velosity))
                     &&
-                    (Double.TryParse(str_angle.Text, out double _Angle)))
-                    {
-                    System.Windows.Forms.MessageBox.Show("успешный ввод цифр");
+                    (Double.TryParse(str_angle.Text, out double _Angle)))                
                         break;
-
-                    }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show("Ошибка");
@@ -87,14 +86,13 @@ namespace WpfApp2
                     if (mm.IsHit(Bird1))
                     {
                         score++;
-                        System.Windows.Forms.MessageBox.Show("А");
                         Canvas.SetTop(Bird, 250);
                         Canvas.SetLeft(Bird, 250);
                         mm.RandSwitch(Bird1);
                         Oshko.Text = Convert.ToString( Convert.ToDouble(Oshko.Text)+1);
                         break;
                     }
-                    if (i >= 10) break;
+                    if (i >= 15) break;
                 }
                 else
                 {
